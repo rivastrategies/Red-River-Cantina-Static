@@ -26,7 +26,7 @@
       <div class="branding-bar">
         <div class="container branding-inner">
           <a class="logo" href="#" aria-label="Red River Cantina Home">
-            <img src="RRCBrand.png" alt="Red River Cantina" style="height: 50px;">
+            <img src="RRCBrand.png" alt="Red River Cantina" style="height: 80px; display: block;">
           </a>
           <nav aria-label="Primary Navigation">
             <ul class="nav-links">
@@ -46,9 +46,42 @@
             </ul>
           </nav>
           <a href="#" class="btn btn-modern btn-sm">Order Online</a>
+          <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
-    </header> 
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="mobile-menu-logo">
+          <img src="RRCBrand.png" alt="Red River Cantina" style="height: 50px;">
+        </a>
+        <button class="mobile-menu-close" aria-label="Close Menu">×</button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="dine-in-menu.html" class="mobile-menu-item">Dine-In Menu</a>
+        <a href="to-go-menu.html" class="mobile-menu-item">To-Go Menu</a>
+        <a href="gluten-free-menu.html" class="mobile-menu-item">Gluten Free | Vegetarian</a>
+        <a href="bar-menu.html" class="mobile-menu-item">Bar Menu</a>
+        <a href="catering.html" class="mobile-menu-item">Catering</a>
+        <a href="#" class="mobile-menu-item">Private Events</a>
+        <a href="#" class="mobile-menu-item">Careers</a>
+        <a href="#" class="mobile-menu-item">Community</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="#" class="mobile-menu-cta">Order Online</a>
+        <div class="mobile-menu-links">
+          <a href="#">Gift Cards</a>
+          <a href="#">E-Club</a>
+          <a href="#">Rewards</a>
+        </div>
+      </div>
+    </div> 
 
 
     <main>
@@ -371,5 +404,30 @@
         <a href="#">E-Club</a>
       </div>
     </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const menuClose = document.querySelector('.mobile-menu-close');
+      const menuOverlay = document.querySelector('.mobile-menu-overlay');
+      
+      menuToggle.addEventListener('click', () => {
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      menuClose.addEventListener('click', () => {
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // Close menu when clicking a link
+      document.querySelectorAll('.mobile-menu-item').forEach(item => {
+        item.addEventListener('click', () => {
+          menuOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    </script>
   </body>
 </html>

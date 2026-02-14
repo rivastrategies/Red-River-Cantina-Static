@@ -27,7 +27,7 @@
       <div class="branding-bar">
         <div class="container branding-inner">
           <a class="logo" href="index.html" aria-label="Red River Cantina Home">
-            <img src="RRCBrand.png" alt="Red River Cantina" style="height: 50px;">
+            <img src="RRCBrand.png" alt="Red River Cantina" style="height: 80px; display: block;">
           </a>
           <nav aria-label="Primary Navigation">
             <ul class="nav-links">
@@ -47,9 +47,42 @@
             </ul>
           </nav>
           <a href="#" class="btn btn-modern btn-sm">Order Online</a>
+          <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="mobile-menu-logo">
+          <img src="RRCBrand.png" alt="Red River Cantina" style="height: 50px;">
+        </a>
+        <button class="mobile-menu-close" aria-label="Close Menu">×</button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="dine-in-menu.html" class="mobile-menu-item">Dine-In Menu</a>
+        <a href="to-go-menu.html" class="mobile-menu-item">To-Go Menu</a>
+        <a href="gluten-free-menu.html" class="mobile-menu-item">Gluten Free | Vegetarian</a>
+        <a href="bar-menu.html" class="mobile-menu-item">Bar Menu</a>
+        <a href="catering.html" class="mobile-menu-item">Catering</a>
+        <a href="#" class="mobile-menu-item">Private Events</a>
+        <a href="#" class="mobile-menu-item">Careers</a>
+        <a href="#" class="mobile-menu-item">Community</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="#" class="mobile-menu-cta">Order Online</a>
+        <div class="mobile-menu-links">
+          <a href="#">Gift Cards</a>
+          <a href="#">E-Club</a>
+          <a href="#">Rewards</a>
+        </div>
+      </div>
+    </div>
 
     <main class="menu-page">
       <div class="container">
@@ -228,6 +261,33 @@
         </div>
 
       </div>
+      <section class="info-band" aria-label="Location and Rewards">
+        <div class="container info-grid">
+          <article class="tile visit-tile">
+            <p class="tile-title">Visit Us</p>
+            <h3>Red River Cantina</h3>
+            <p>Richmond, Texas</p>
+            <p>19220 W. Bellfort Blvd.</p>
+            <p>Richmond, Texas 77407</p>
+            <p>346-279-1192</p>
+            <p class="hours">Sunday – Thursday | 11:00 am – 9:00pm · Friday &amp; Saturday | 11:00 am – 10:00pm</p>
+            <a href="#" class="social-link">Follow Us</a>
+          </article>
+
+          <article class="tile reward-tile">
+            <div class="reward-icon">🎁</div>
+            <h3>Rewards Program</h3>
+            <p>Earn points, unlock rewards, get a birthday bonus.</p>
+            <a href="#" class="join-btn">Join Now</a>
+          </article>
+
+          <article class="tile map-tile" aria-label="Map Preview">
+            <div class="map-placeholder">
+              <span>Map Preview</span>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="brand-footer">
@@ -244,5 +304,30 @@
         <a href="#">E-Club</a>
       </div>
     </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const menuClose = document.querySelector('.mobile-menu-close');
+      const menuOverlay = document.querySelector('.mobile-menu-overlay');
+      
+      menuToggle.addEventListener('click', () => {
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      menuClose.addEventListener('click', () => {
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // Close menu when clicking a link
+      document.querySelectorAll('.mobile-menu-item').forEach(item => {
+        item.addEventListener('click', () => {
+          menuOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    </script>
   </body>
 </html>

@@ -184,6 +184,10 @@ body {
   gap: 1rem;
 }
 
+.nav-links li {
+  position: relative;
+}
+
 .nav-links a {
   color: #2b3a3f;
   text-decoration: none;
@@ -193,10 +197,58 @@ body {
   font-size: 0.95rem;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
+  display: block;
+  padding: 0.5rem 0.8rem;
 }
 
 .nav-links a:hover {
   border-image: linear-gradient(90deg, var(--sun), var(--sun-soft)) 1;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 240px;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  padding: 0.75rem 1.25rem;
+  color: var(--ink);
+  font-size: 0.85rem;
+  border-bottom: none;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));
+  border-image: none;
 }
 
 .hero {
@@ -250,7 +302,7 @@ body {
   position: relative;
   overflow: hidden;
   background: #1a2a35;
-  height: 500px;
+  height: 650px;
 }
 
 .home-hero-carousel .carousel-container {
@@ -270,102 +322,115 @@ body {
   justify-content: center;
   opacity: 0;
   animation: homeCarouselSlide 36s infinite;
+  background-color: #1a2a35;
 }
 
 .home-hero-carousel .slide-1 {
   animation-delay: 0s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-2-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-2 {
   animation-delay: 3s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-3-800x533.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-3 {
   animation-delay: 6s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-4-800x533.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-4 {
   animation-delay: 9s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-7-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-5 {
   animation-delay: 12s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-8-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-6 {
   animation-delay: 15s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-9-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-7 {
   animation-delay: 18s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-10-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-8 {
   animation-delay: 21s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-11-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-9 {
   animation-delay: 24s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-14-616x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-10 {
   animation-delay: 27s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-15-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-11 {
   animation-delay: 30s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Red-River-Cantina-20-533x800.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-12 {
   animation-delay: 33s;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
     url('./home-images/Set-Table-800x531.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-hero-carousel .slide-overlay {

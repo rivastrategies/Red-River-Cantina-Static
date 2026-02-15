@@ -89,7 +89,16 @@
         </div>
       </div>
     </div>
-    <script src="site.js"></script>
+
+    <main class="menu-page" aria-label="Dine-In Menu">
+      <div class="container">
+        <h1 class="page-title">Dine-In Menu</h1>
+        <p class="section-note" style="text-align: center; font-size: 1.1rem;">Signature plates served hot in the heart of the Cantina.</p>
+
+        <section class="menu-section">
+          <h2 class="section-title">Antojitos</h2>
+
+          <div class="menu-item">
             <h3>GUACAMOLE</h3>
             <p class="description">Pico de gallo & fresh lime juice</p>
             <p class="price-line">Reg. 9.95 &nbsp; Lrg. 14.25</p>
@@ -805,30 +814,6 @@
         </a>
       </div>
     </footer>
-
-    <script>
-      // Mobile Menu Toggle
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const menuClose = document.querySelector('.mobile-menu-close');
-      const menuOverlay = document.querySelector('.mobile-menu-overlay');
-      
-      menuToggle.addEventListener('click', () => {
-        menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-      
-      menuClose.addEventListener('click', () => {
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      
-      // Close menu when clicking a link
-      document.querySelectorAll('.mobile-menu-item').forEach(item => {
-        item.addEventListener('click', () => {
-          menuOverlay.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-      });
-    </script>
+    <script src="site.js"></script>
   </body>
 </html>

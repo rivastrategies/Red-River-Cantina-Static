@@ -66,7 +66,7 @@
 
 .menu-item {
   margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 1rem 1.5rem 1.5rem;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -421,4 +421,116 @@
   .section-title.fancy {
     font-size: 1.8rem;
   }
+}
+
+/* Private Events Styles */
+.menu-intro {
+  background: #f8f8f8;
+  padding: 4rem 0;
+}
+
+.intro-kicker {
+  color: var(--teal-mid);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.intro-title {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--chili);
+  text-align: center;
+  margin: 0 0 2rem;
+  line-height: 1.2;
+}
+
+.intro-lede {
+  font-size: 1.1rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.intro-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.intro-card h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.3rem;
+  color: var(--teal-deep);
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.intro-card p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.menu-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.menu-grid-item {
+  background: rgba(245, 158, 11, 0.05);
+  padding: 1rem;
+  border-left: 3px solid var(--sun);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.menu-cta-card {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.cta-note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0 0 1rem;
+}
+
+.cta-title {
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.cta-code {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.section-note.emphasis {
+  font-weight: 600;
+  color: var(--ink);
 }

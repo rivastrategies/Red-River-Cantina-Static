@@ -89,8 +89,14 @@
         </div>
       </div>
     </div>
-    <script src="site.js"></script>
-          </div>
+
+    <main class="menu-page" aria-label="To-Go Menu">
+      <div class="container">
+        <h1 class="page-title">To-Go Menu</h1>
+        <p class="section-note" style="text-align: center; font-size: 1.1rem;">Quick, convenient Tex-Mex favorites ready when you are.</p>
+
+        <section class="menu-section">
+          <h2 class="section-title">Appetizers</h2>
 
           <div class="menu-item">
             <h3>GUACAMOLE</h3>
@@ -715,30 +721,6 @@
         </a>
       </div>
     </footer>
-
-    <script>
-      // Mobile Menu Toggle
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const menuClose = document.querySelector('.mobile-menu-close');
-      const menuOverlay = document.querySelector('.mobile-menu-overlay');
-      
-      menuToggle.addEventListener('click', () => {
-        menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-      
-      menuClose.addEventListener('click', () => {
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      
-      // Close menu when clicking a link
-      document.querySelectorAll('.mobile-menu-item').forEach(item => {
-        item.addEventListener('click', () => {
-          menuOverlay.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-      });
-    </script>
+    <script src="site.js"></script>
   </body>
 </html>

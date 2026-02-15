@@ -153,6 +153,24 @@ body {
   color: var(--sun-soft);
 }
 
+.app-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--chili);
+  color: #ffffff !important;
+  letter-spacing: 0.06em;
+  font-size: 0.7rem;
+  transition: background 0.2s ease;
+}
+
+.app-download-btn:hover {
+  background: #a00000;
+  color: #ffffff;
+}
+
 .branding-bar {
   background: linear-gradient(180deg, #faf6ef, #f2e7d8);
   border-bottom: 1px solid rgba(17, 94, 89, 0.18);
@@ -161,7 +179,7 @@ body {
 .branding-inner {
   min-height: 76px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 1rem;
 }
@@ -295,6 +313,42 @@ body {
   gap: 0.7rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.booking-hero {
+  min-height: 320px;
+  background-image: linear-gradient(rgba(15, 118, 110, 0.65), rgba(15, 118, 110, 0.65)),
+    url('./catering-images1/Red-River-Catering-17-800x533.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.booking-hero .hero-overlay {
+  background: linear-gradient(180deg, rgba(15, 118, 110, 0.55), rgba(17, 94, 89, 0.7));
+}
+
+.booking-form-section {
+  padding: 4rem 0 5rem;
+  background: #f6f2ea;
+}
+
+.booking-form-lede {
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.booking-form-lede h2 {
+  margin: 0 0 0.75rem;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+}
+
+.booking-form-lede p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
 }
 
 /* Home Carousel Styles */
@@ -874,6 +928,107 @@ body {
   font-size: 0.78rem;
 }
 
+.order-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(20, 30, 34, 0.68);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 60;
+}
+
+.order-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.order-modal__dialog {
+  position: relative;
+  width: min(460px, 100%);
+  background: var(--white);
+  border-radius: 18px;
+  padding: 2.4rem 2rem 2.1rem;
+  box-shadow: 0 24px 48px rgba(17, 94, 89, 0.18);
+  text-align: center;
+}
+
+.order-modal__eyebrow {
+  margin: 0 0 0.6rem;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: var(--teal-mid);
+}
+
+.order-modal__title {
+  margin: 0 0 0.85rem;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.95rem;
+  color: var(--teal-deep);
+}
+
+.order-modal__subtitle {
+  margin: 0 0 1.8rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.order-modal__actions {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.order-modal__actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.order-modal__actions .btn-outline {
+  color: var(--teal-deep);
+  border-color: rgba(17, 94, 89, 0.4);
+}
+
+.order-modal__close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.order-modal__close:hover,
+.order-modal__close:focus {
+  color: var(--teal-deep);
+}
+
+@media (max-width: 520px) {
+  .order-modal__dialog {
+    padding: 2rem 1.5rem;
+  }
+
+  .order-modal__title {
+    font-size: 1.7rem;
+  }
+
+  .order-modal__subtitle {
+    font-size: 0.9rem;
+  }
+}
+
 .info-band,
 .brand-footer {
   background: linear-gradient(180deg, var(--teal-footer), var(--teal-footer-dark));
@@ -1047,6 +1202,20 @@ body {
   padding: 0.45rem 0.9rem;
   font-size: 0.75rem;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-icon svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
 }
 
 @media (max-width: 980px) {
@@ -1326,6 +1495,14 @@ body {
   margin-bottom: 1rem;
 }
 
+.career-openings {
+  margin: 1rem 0 1.5rem 1.25rem;
+  color: var(--ink);
+  display: grid;
+  gap: 0.4rem;
+  list-style: disc;
+}
+
 .careers-highlights {
   display: grid;
   gap: 1.5rem;
@@ -1534,6 +1711,18 @@ body {
   }
 }
 
+.header-story-btn {
+  margin-right: 0.75rem;
+  color: var(--teal-deep);
+  border-color: var(--teal-deep);
+  background: transparent;
+}
+
+.header-story-btn:hover {
+  background: var(--teal-deep);
+  color: #ffffff;
+}
+
 .community-overview {
   padding: 4rem 0;
   background: var(--bg-light);
@@ -1576,5 +1765,90 @@ body {
 @media (max-width: 720px) {
   .community-overview {
     padding: 3rem 0;
+  }
+}
+
+.story-hero {
+  position: relative;
+  background: url("Groce-Family-History.jpg") center / cover no-repeat;
+  color: var(--white);
+}
+
+.story-hero-overlay {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
+  padding: 7rem 0;
+}
+
+.story-hero-content {
+  max-width: 720px;
+}
+
+.story-tag {
+  display: inline-block;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  background: rgba(204, 0, 0, 0.9);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.story-hero-content h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.story-hero-content p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.story-content {
+  background: var(--white);
+  padding: 4rem 0 5rem;
+}
+
+.story-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 1fr);
+  align-items: start;
+}
+
+.story-narrative h2 {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  margin-bottom: 1.5rem;
+}
+
+.story-narrative p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.story-highlight {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.story-highlight .highlight-card {
+  background: var(--white);
+  box-shadow: 0 18px 40px rgba(17, 94, 89, 0.12);
+}
+
+@media (max-width: 900px) {
+  .story-hero-overlay {
+    padding: 5.5rem 0;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
   }
 }

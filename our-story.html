@@ -17,10 +17,10 @@
     <header class="site-header">
       <div class="utility-bar">
         <div class="container utility-inner">
-          <a href="#">Gift Cards</a>
-          <a href="#">Order Online</a>
-          <a href="#">E-Club</a>
-          <a href="#">Rewards</a>
+          <a href="https://order.toasttab.com/egiftcards/redrivercantina">Gift Cards</a>
+          <a href="#" data-order-modal-trigger>Order Online</a>
+          <a href="https://www.toasttab.com/redrivercantina/marketing-signup">E-Club</a>
+          <a href="https://www.toasttab.com/redrivercantina/rewardsSignup">Rewards</a>
         </div>
       </div>
       <div class="branding-bar">
@@ -46,7 +46,7 @@
             </ul>
           </nav>
           <a href="our-story.html" class="btn btn-outline btn-sm header-story-btn">Our Story</a>
-          <a href="#" class="btn btn-modern btn-sm">Order Online</a>
+          <a href="#" class="btn btn-modern btn-sm" data-order-modal-trigger>Order Online</a>
           <button class="mobile-menu-toggle" aria-label="Toggle Menu">
             <span></span>
             <span></span>
@@ -75,11 +75,11 @@
         <a href="community.html" class="mobile-menu-item">Community</a>
       </nav>
       <div class="mobile-menu-footer">
-        <a href="#" class="mobile-menu-cta">Order Online</a>
+        <a href="#" class="mobile-menu-cta" data-order-modal-trigger>Order Online</a>
         <div class="mobile-menu-links">
-          <a href="#">Gift Cards</a>
-          <a href="#">E-Club</a>
-          <a href="#">Rewards</a>
+          <a href="https://order.toasttab.com/egiftcards/redrivercantina">Gift Cards</a>
+          <a href="https://www.toasttab.com/redrivercantina/marketing-signup">E-Club</a>
+          <a href="https://www.toasttab.com/redrivercantina/rewardsSignup">Rewards</a>
         </div>
       </div>
     </div>
@@ -133,31 +133,18 @@
         <a href="careers.html">Careers</a>
         <a href="catering.html">Catering</a>
         <a href="community.html">Community</a>
-        <a href="#">E-Club</a>
+        <a href="https://www.toasttab.com/redrivercantina/marketing-signup">E-Club</a>
+        <a class="footer-social" href="https://www.facebook.com/profile.php?id=100084192871053" aria-label="Follow Red River Cantina on Facebook">
+          <span class="footer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" focusable="false">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.16 1.8.16v2h-1c-1 0-1.3.62-1.3 1.3V12h2.2l-.35 3h-1.85v7A10 10 0 0 0 22 12Z"></path>
+            </svg>
+          </span>
+          <span>Facebook</span>
+        </a>
       </div>
     </footer>
 
-    <script>
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const menuClose = document.querySelector('.mobile-menu-close');
-      const menuOverlay = document.querySelector('.mobile-menu-overlay');
-
-      menuToggle.addEventListener('click', () => {
-        menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-
-      menuClose.addEventListener('click', () => {
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-
-      document.querySelectorAll('.mobile-menu-item').forEach((item) => {
-        item.addEventListener('click', () => {
-          menuOverlay.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-      });
-    </script>
+    <script src="site.js"></script>
   </body>
 </html>

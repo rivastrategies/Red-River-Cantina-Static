@@ -199,6 +199,34 @@
   z-index: 3;
 }
 
+.book-catering-cta {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(15, 118, 110, 0.75));
+  color: #ffffff;
+}
+
+.book-catering-cta .cta-card {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.book-catering-cta .cta-card h2 {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  text-transform: uppercase;
+}
+
+.book-catering-cta .cta-card p {
+  margin: 0;
+  font-size: 1.07rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .dot {
   width: 12px;
   height: 12px;

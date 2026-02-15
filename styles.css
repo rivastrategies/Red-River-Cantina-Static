@@ -1276,3 +1276,305 @@ body {
     grid-template-columns: auto 1fr auto;
   }
 }
+
+/* Careers page layout and form styles */
+.careers-hero {
+  position: relative;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.85), rgba(204, 0, 0, 0.75));
+  color: var(--white);
+}
+
+.careers-hero-overlay {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.2));
+  padding: 6rem 0 5rem;
+}
+
+.careers-hero-content {
+  max-width: 720px;
+  text-align: left;
+}
+
+.careers-hero-content h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.careers-hero-content p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.careers-intro {
+  background: var(--bg-light);
+  padding: 4rem 0;
+}
+
+.careers-intro-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: start;
+}
+
+.careers-intro-grid h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  margin-bottom: 1rem;
+}
+
+.careers-highlights {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.highlight-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 16px 35px rgba(17, 94, 89, 0.12);
+  border: 1px solid rgba(17, 94, 89, 0.08);
+}
+
+.highlight-card h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--chili);
+  margin-bottom: 0.75rem;
+}
+
+.highlight-card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.careers-application,
+.community-application {
+  padding: 4rem 0 5rem;
+  background: var(--white);
+}
+
+.careers-form-header {
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+
+.careers-form-header h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  margin-bottom: 0.75rem;
+}
+
+.careers-form-header p {
+  color: var(--muted);
+}
+
+.career-application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.career-application-form fieldset {
+  border: 1px solid rgba(17, 94, 89, 0.2);
+  border-radius: 18px;
+  padding: 2rem;
+  background: rgba(239, 229, 214, 0.25);
+}
+
+.career-application-form legend {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  padding: 0 0.75rem;
+  color: var(--teal-deep);
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.career-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.career-field span {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.career-field input,
+.career-field select,
+.career-field textarea {
+  border: 1px solid rgba(17, 94, 89, 0.3);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  background: var(--white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.career-field input:focus,
+.career-field select:focus,
+.career-field textarea:focus {
+  outline: none;
+  border-color: var(--teal-mid);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25);
+}
+
+.career-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.career-field.wide {
+  grid-column: 1 / -1;
+}
+
+.inline-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.inline-fieldset legend {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-transform: none;
+}
+
+.inline-fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.inline-fieldset input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.education-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.education-section {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 0 1px rgba(17, 94, 89, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.education-section h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: var(--chili);
+}
+
+.applicant-statement {
+  background: rgba(245, 158, 11, 0.12);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-actions .btn {
+  min-width: 220px;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .careers-hero-overlay {
+    padding: 5rem 0 4rem;
+  }
+
+  .career-application-form fieldset {
+    padding: 1.5rem;
+  }
+
+  .inline-fieldset {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-actions {
+    justify-content: center;
+  }
+}
+
+.community-overview {
+  padding: 4rem 0;
+  background: var(--bg-light);
+}
+
+.community-overview-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: start;
+}
+
+.community-overview-text h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  margin-bottom: 1rem;
+}
+
+.community-overview-text p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.community-overview-text .community-info {
+  display: grid;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.community-highlights {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .community-overview {
+    padding: 3rem 0;
+  }
+}

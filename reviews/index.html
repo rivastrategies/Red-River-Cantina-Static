@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - Red River Cantina | Richmond, TX</title>
+    <meta name="description" content="Read authentic customer reviews of Red River Cantina in Richmond, Texas. See what guests say about our food, service, and atmosphere.">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../cantina-theme.css">
+    <style>
+        .reviews-page {
+            padding: 2rem 0 3rem;
+            background: #f8f9fa;
+        }
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .reviews-header h1 {
+            color: var(--accent-gold, #d4a574);
+            margin-bottom: 1rem;
+            font-family: "Oswald", sans-serif;
+            font-size: clamp(2.4rem, 4vw + 1rem, 3.4rem);
+            text-transform: uppercase;
+        }
+        .rating-summary {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .rating-summary .stars {
+            color: #ffa500;
+            font-size: 1.5rem;
+        }
+        .jump-links {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .jump-links h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-dark, #333);
+            font-family: "Oswald", sans-serif;
+        }
+        .jump-links ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+        .jump-links a {
+            color: var(--accent-gold, #d4a574);
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            font-weight: 500;
+        }
+        .jump-links a:hover {
+            background-color: #f8f9fa;
+            color: var(--teal-deep, #0f766e);
+        }
+        .reviews-section {
+            margin-bottom: 3rem;
+        }
+        .reviews-section h2 {
+            color: var(--text-dark, #333);
+            border-bottom: 2px solid var(--accent-gold, #d4a574);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            font-family: "Oswald", sans-serif;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+        .review-cards {
+            display: grid;
+            gap: 2rem;
+        }
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-gold, #d4a574);
+            transition: transform 150ms ease, box-shadow 150ms ease;
+        }
+        .review-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        .reviewer-info h3 {
+            margin: 0 0 0.25rem 0;
+            color: var(--text-dark, #333);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .reviewer-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+        .review-rating {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            flex-shrink: 0;
+        }
+        .stars {
+            color: #ffa500;
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        .review-date {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .review-text {
+            line-height: 1.6;
+            color: #444;
+            margin: 0;
+        }
+        .menu-favorites {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        .menu-favorites h2 {
+            color: var(--accent-gold, #d4a574);
+            margin-bottom: 1rem;
+            font-family: "Oswald", sans-serif;
+        }
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .favorite-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .allergen-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        .allergen-notice h4 {
+            color: #856404;
+            margin: 0 0 0.5rem 0;
+        }
+        .allergen-notice p {
+            color: #856404;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .back-home {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .back-home a {
+            background: var(--accent-gold, #d4a574);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            display: inline-block;
+            transition: background-color 0.2s;
+            font-weight: 600;
+        }
+        .back-home a:hover {
+            background: var(--teal-deep, #0f766e);
+        }
+        .reviews-disclaimer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .review-rating {
+                align-items: flex-start;
+            }
+            .favorites-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+      <div class="utility-bar">
+        <div class="container utility-inner">
+          <a href="https://order.toasttab.com/egiftcards/redrivercantina">Gift Cards</a>
+          <a href="#" data-order-modal-trigger>Order Online</a>
+          <a href="https://www.toasttab.com/redrivercantina/marketing-signup">E-Club</a>
+          <a href="https://www.toasttab.com/redrivercantina/rewardsSignup">Rewards</a>
+          <a href="https://apps.apple.com/us/app/red-river-restaurants/id6744835848" class="app-download-btn">iPhone App</a>
+          <a href="https://play.google.com/store/apps/details?id=com.toasttab.redriverrestaurants&hl=en-us&pli=1" class="app-download-btn">Android App</a>
+        </div>
+      </div>
+      <div class="branding-bar">
+        <div class="container branding-inner">
+          <a class="logo" href="../index.html" aria-label="Red River Cantina Home">
+            <img src="../RRCBrand.png" alt="Red River Cantina" style="height: 80px; display: block;">
+          </a>
+          <nav aria-label="Primary Navigation">
+            <ul class="nav-links">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Menus</a>
+                <ul class="dropdown-menu">
+                  <li><a href="../dine-in-menu.html">DINE-IN MENU</a></li>
+                  <li><a href="../to-go-menu.html">TO-GO MENU</a></li>
+                  <li><a href="../gluten-free-menu.html">GLUTEN FREE | VEGETARIAN</a></li>
+                  <li><a href="../bar-menu.html">BAR MENU</a></li>
+                </ul>
+              </li>
+              <li><a href="../catering.html">Catering</a></li>
+              <li><a href="../private-events.html">Private Events</a></li>
+              <li><a href="../careers.html">Careers</a></li>
+              <li><a href="../community.html">Community</a></li>
+            </ul>
+          </nav>
+          <a href="../our-story.html" class="btn btn-outline btn-sm header-story-btn">Our Story</a>
+          <a href="#" class="btn btn-modern btn-sm" data-order-modal-trigger>Order Online</a>
+          <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-header">
+        <a href="../index.html" class="mobile-menu-logo">
+          <img src="../RRCBrand.png" alt="Red River Cantina" style="height: 50px;">
+        </a>
+        <button class="mobile-menu-close" aria-label="Close Menu">×</button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <a href="../our-story.html" class="mobile-menu-item">Our Story</a>
+        <a href="../dine-in-menu.html" class="mobile-menu-item">Dine-In Menu</a>
+        <a href="../to-go-menu.html" class="mobile-menu-item">To-Go Menu</a>
+        <a href="../gluten-free-menu.html" class="mobile-menu-item">Gluten Free | Vegetarian</a>
+        <a href="../bar-menu.html" class="mobile-menu-item">Bar Menu</a>
+        <a href="../catering.html" class="mobile-menu-item">Catering</a>
+        <a href="../private-events.html" class="mobile-menu-item">Private Events</a>
+        <a href="../careers.html" class="mobile-menu-item">Careers</a>
+        <a href="../community.html" class="mobile-menu-item">Community</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="#" class="mobile-menu-cta" data-order-modal-trigger>Order Online</a>
+        <div class="mobile-menu-links">
+          <a href="https://order.toasttab.com/egiftcards/redrivercantina">Gift Cards</a>
+          <a href="https://www.toasttab.com/redrivercantina/marketing-signup">E-Club</a>
+          <a href="https://www.toasttab.com/redrivercantina/rewardsSignup">Rewards</a>
+          <a href="https://apps.apple.com/us/app/red-river-restaurants/id6744835848" class="app-download-btn">iPhone App</a>
+          <a href="https://play.google.com/store/apps/details?id=com.toasttab.redriverrestaurants&hl=en-us&pli=1" class="app-download-btn">Android App</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="reviews-page">
+        <div class="container reviews-container">
+            <header class="reviews-header">
+                <h1>Customer Reviews</h1>
+                <div class="rating-summary">
+                    <span class="stars">★★★★★</span>
+                    <strong>4.2</strong> out of 5 stars based on <strong>1,391</strong> Google reviews
+                </div>
+            </header>
+
+            <nav class="jump-links" aria-label="Page navigation">
+                <h2>Quick Navigation</h2>
+                <ul>
+                    <li><a href="#featured-reviews">Featured Reviews</a></li>
+                    <li><a href="#menu-favorites">Menu Favorites</a></li>
+                    <li><a href="#service-mentions">Service Mentions</a></li>
+                    <li><a href="#more-reviews">More Reviews</a></li>
+                </ul>
+            </nav>
+
+            <section id="menu-favorites" class="menu-favorites">
+                <h2>Menu Favorites Mentioned in Reviews</h2>
+                <div class="favorites-grid">
+                    <div class="favorite-item">🌮 <strong>Fajitas</strong></div>
+                    <div class="favorite-item">🍹 <strong>Top Shelf Margaritas</strong></div>
+                    <div class="favorite-item">🍤 <strong>Shrimp Enchiladas</strong></div>
+                    <div class="favorite-item">🐔 <strong>Pollo Marisco</strong></div>
+                    <div class="favorite-item">🥑 <strong>Chips & Salsa</strong></div>
+                    <div class="favorite-item">🥩 <strong>Steak Fajitas</strong></div>
+                    <div class="favorite-item">🧀 <strong>Cheese Dip</strong></div>
+                    <div class="favorite-item">🥑 <strong>Guacamole</strong></div>
+                    <div class="favorite-item">🍽️ <strong>Combination Platters</strong></div>
+                    <div class="favorite-item">🍺 <strong>Cold Beer</strong></div>
+                </div>
+            </section>
+
+            <section id="featured-reviews" class="reviews-section">
+                <h2>Featured Reviews</h2>
+                <div class="review-cards">
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Donald Cook</h3>
+                                <p class="reviewer-meta">Local Guide · 44 reviews · 16 photos</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2024-06-15">8 months ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            This is by far my most favorite Tex-Mex restaurant in the Richmond area. The fajitas are to die for, and the rest of the menu is not bad at all. I am a big fan of the top shelf margaritas. Love the atmosphere and service we receive. I've never had a complaint. This is an awesome place to meet up for after work drinks and some appetizers to catch up with each other and have a few laughs. Highly recommend.
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Eduardo Borges</h3>
+                                <p class="reviewer-meta">Local Guide · 13 reviews · 20 photos</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2024-11-15">3 months ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            We had dinner at Red River Cantina Tex-Mex and Calvin made the whole experience outstanding. His service was the best I've had in a restaurant in a long time. He paid attention without hovering, kept everything moving at the right pace, and treated us like he genuinely cared that we enjoyed our meal.
+
+                            A few things stood out:
+
+                            • He anticipated what we needed before we asked.
+                            • He kept a full section running smoothly and still made time to check in with us.
+                            • He offered helpful suggestions without being pushy.
+                            • He made the whole meal feel relaxed and welcoming.
+
+                            The food was great, but Calvin is the reason we will be back. Red River Tex-Mex is lucky to have someone who brings that level of care and professionalism to the table. If you go, ask for him.
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Q B</h3>
+                                <p class="reviewer-meta">Local Guide · 226 reviews · 743 photos</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2023-02-15">a year ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            First time here and upon walking in it was warming atmosphere clean and the greeter was very welcoming. Getting seated was good but the server was kinda nonchalant. We received chips and they were fresh and the salsa was as well. We ordered our food and it was fresh and hot! Everything was good and we enjoyed someone birthday which was a great setting to enjoy.
+                            The price for the food was great as well and affordable. We definitely will return again.
+                        </blockquote>
+                    </article>
+                </div>
+            </section>
+
+            <section id="service-mentions" class="reviews-section">
+                <h2>Service Mentions</h2>
+                <div class="review-cards">
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Phallen Boyd</h3>
+                                <p class="reviewer-meta">Local Guide · 26 reviews · 36 photos</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2025-01-28">2 weeks ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            Visited here yesterday for the first time. The hosts at the door were friendly and sat us immediately. Christian was our server and he was amazing. Very knowledgeable of the menu and provided us suggestions. He was very attentive and came by our table multiple times to make sure we were good. I had the pollo marisco and my husband had the build your combination platter.. we were both pleasantly surprised. The food and service was great.. we will definitely return.
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Kelly Chavez</h3>
+                                <p class="reviewer-meta">2 reviews</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2025-01-15">a month ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            Excellent service! Our server Jesus truly made our experience amazing. He was very caring, attentive to every detail, and always concerned about our needs and wants. He consistently gave the best recommendations for both food and drinks, and every suggestion was spot on. His professionalism and kindness stood out and made our visit unforgettable. I would absolutely request him as my server the next time I go.
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Dyer Bowen</h3>
+                                <p class="reviewer-meta">6 reviews</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2025-01-21">3 weeks ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            Last Friday the 16th of January we and a couple of our friends ate at the Richmond restaurant. I had the shrimp enchiladas and it was great. The beer was cold and our server Caroline was very friendly and personable. She did an exceptional job taking care of us. This has become our favorite place to eat.
+                        </blockquote>
+                    </article>
+                </div>
+            </section>
+
+            <section id="more-reviews" class="reviews-section">
+                <h2>More Reviews</h2>
+                <div class="review-cards">
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Anajulia Nunez</h3>
+                                <p class="reviewer-meta">2 reviews</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2025-01-15">a month ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            I went to Red River Cantina in Richmond for lunch earlier today, and once again it reminded me why it's one of my favorite restaurants. The food was excellent as always—fresh, flavorful, and perfectly prepared. Everything came out quickly and tasted amazing, making it a perfect lunch spot.
+                            I also want to give a special shoutout to my server, Jesus. He was really great—friendly, attentive, and made the whole experience even better. His service was spot-on without being overbearing, and he genuinely made us feel welcome.
+                            Between the consistently great food, relaxed lunch vibe, and standout service, Red River Cantina never disappoints. Highly recommend stopping by if you're in Richmond.
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Xenia Rodriguezz</h3>
+                                <p class="reviewer-meta">8 reviews</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2025-01-18">4 weeks ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            Nessa was really nice. Her service is immaculate. Very sweet, patient, and made us feel at home. 100/10 really good food as well. 100% recommend to come here because I know I will be coming back for sure :)
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Leah Holt</h3>
+                                <p class="reviewer-meta">1 review</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2025-01-18">4 weeks ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            The food and service was amazing. We had the steak fajitas. We could not stop eating. Nessa our server was friendly and provided great customer service. She was at our table to take our order as soon as we were seated. Food came so quick.
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Victoria Holt</h3>
+                                <p class="reviewer-meta">4 reviews · 1 photo</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★</div>
+                                <time class="review-date" datetime="2024-11-15">3 months ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            * Warning for allergen sufferers *
+                            I've celiac disease (strict no gluten-medical condition) attended mid family holiday, ordered gluten free taco dinner from the gluten free menu, also had gluten free nachos.
+                            Whilst the food tasted nice upon eating, it did not however, taste as good for the following 13hrs coming back up, nor the subsequent 24hrs of special ladies room attendance or the following week+ of joint inflammation and pain having been gluttoned at the restaurant.
+                            Restaurant was contacted after the incident and it was identified that I'd likely been given gluten containing cheese on/within the meal however upon trying to contact the manager several times and one response from them stating they were off on the day of the email and would respond we are still waiting…... They clearly do not take allergen issues seriously which they very clearly are. Not just with my celiac issue, but other allergen issues people have.
+                            I have never, ever suffered to that extent since celiac diagnosis 10+yrs ago, of being gluttoned and never wish to experience it again.
+                            Review is to caution those with allergens and take heed this restaurant does not have best intentions regarding these.
+                        </blockquote>
+                        <div class="allergen-notice">
+                            <h4>⚠️ Dietary & Allergen Note</h4>
+                            <p>Please inform your server of any allergies or dietary restrictions. While we offer a gluten-free menu, cross-contamination may occur in our kitchen. Always double-check ingredients with staff and management for your safety.</p>
+                        </div>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>ejs023</h3>
+                                <p class="reviewer-meta">6 reviews · 2 photos</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★</div>
+                                <time class="review-date" datetime="2024-08-15">6 months ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            I hate to leave bad reviews, but here is my experience. Just moved into the Richmond area and me and the wife tried out Red River Cantina for the 1st and last time. Right from the start the young girl w/blonde/black hair seemed like she hated life and her job. (Very bad impression -lacking friendliness) Ok, let's move on, we're there for the food. I ordered the fajita tacos on flour. Not only was it horrible and cold,, they cheap you on portions. (See pics) not expecting 1/2lb of meat for a taco, but let me least make a decent taco!! My wife had the a taco and tostada. Same thing, horrible. I wanted to send it back, but the server came around every 7-10 minutes. For 50$+ bucks, it's got to be better! Our food was equivalent to taco cabana, except less meat and we paid triple! The current reviews has to be fake, this place has bad food! My thoughts on ppl coming is that there is no other Mex food in this area. The plus, the ambience is a+! Decor was very Tex-med tradition.
+                        </blockquote>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <div class="reviewer-info">
+                                <h3>Wendy DeBorde</h3>
+                                <p class="reviewer-meta">Local Guide · 131 reviews · 311 photos</p>
+                            </div>
+                            <div class="review-rating">
+                                <div class="stars">★★★★★</div>
+                                <time class="review-date" datetime="2024-03-15">11 months ago</time>
+                            </div>
+                        </header>
+                        <blockquote class="review-text">
+                            Waiter Christian was amazing! Excellent service. Restaurant has a great vibe with fun decor. Fajitas, chips, and food was very good. Not spicy at all if that's your thing. Sadly rice was under cooked. This could be easily improved. But overall was a great date night spot!
+                        </blockquote>
+                    </article>
+                </div>
+            </section>
+
+            <div class="back-home">
+                <a href="../index.html">← Back to Homepage</a>
+            </div>
+
+            <p class="reviews-disclaimer">Reviews sourced from Google; displayed verbatim.</p>
+        </div>
+    </main>
+
+    <footer class="brand-footer">
+      <div class="container logos-row">
+        <div class="logo-chip">Red River Cantina</div>
+        <div class="logo-chip">Richmond, Texas</div>
+        <div class="logo-chip">19220 W. Bellfort Blvd.</div>
+        <div class="logo-chip">346-279-1192</div>
+      </div>
+      <div class="container links-row">
+        <a href="../careers.html">Careers</a>
+        <a href="../catering.html">Catering</a>
+        <a href="../community.html">Community</a>
+        <a href="https://www.toasttab.com/redrivercantina/marketing-signup">E-Club</a>
+        <a class="footer-social" href="https://www.facebook.com/profile.php?id=100084192871053" aria-label="Follow Red River Cantina on Facebook">
+          <span class="footer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" focusable="false">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.16 1.8.16v2h-1c-1 0-1.3.62-1.3 1.3V12h2.2l-.35 3h-1.85v7A10 10 0 0 0 22 12Z"></path>
+            </svg>
+          </span>
+          <span>Facebook</span>
+        </a>
+      </div>
+    </footer>
+
+    <script src="../site.js"></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Red River Cantina",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "19220 W. Bellfort Blvd.",
+            "addressLocality": "Richmond",
+            "addressRegion": "TX",
+            "postalCode": "77407"
+        },
+        "telephone": "(281) 277-5060",
+        "url": "https://redrivercantina.com",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.2",
+            "reviewCount": "1391"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Donald Cook"
+                },
+                "datePublished": "8 months ago",
+                "reviewBody": "This is by far my most favorite Tex-Mex restaurant in the Richmond area. The fajitas are to die for, and the rest of the menu is not bad at all. I am a big fan of the top shelf margaritas. Love the atmosphere and service we receive. I've never had a complaint. This is an awesome place to meet up for after work drinks and some appetizers to catch up with each other and have a few laughs. Highly recommend.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                }
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Eduardo Borges"
+                },
+                "datePublished": "3 months ago",
+                "reviewBody": "We had dinner at Red River Cantina Tex-Mex and Calvin made the whole experience outstanding. His service was the best I've had in a restaurant in a long time. He paid attention without hovering, kept everything moving at the right pace, and treated us like he genuinely cared that we enjoyed our meal.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                }
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Phallen Boyd"
+                },
+                "datePublished": "2 weeks ago",
+                "reviewBody": "Visited here yesterday for the first time. The hosts at the door were friendly and sat us immediately. Christian was our server and he was amazing. Very knowledgeable of the menu and provided us suggestions. He was very attentive and came by our table multiple times to make sure we were good. I had the pollo marisco and my husband had the build your combination platter.. we were both pleasantly surprised. The food and service was great.. we will definitely return.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                }
+            }
+        ]
+    }
+    </script>
+</body>
+</html>

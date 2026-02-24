@@ -1519,7 +1519,7 @@ body {
 /* Careers page layout and form styles */
 .careers-hero {
   position: relative;
-  background: linear-gradient(135deg, rgba(15, 118, 110, 0.85), rgba(204, 0, 0, 0.75));
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.85), rgba(204, 0, 0, 0.75)), url('image000000 (1).JPG') center bottom / cover no-repeat;
   color: var(--white);
 }
 

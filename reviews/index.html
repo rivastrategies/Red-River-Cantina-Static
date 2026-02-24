@@ -314,6 +314,8 @@
         @media (max-width: 768px) {
             .reviews-hero {
                 min-height: 350px;
+                background-position: center center;
+                background-size: cover;
             }
             
             .reviews-hero-overlay {
@@ -348,6 +350,28 @@
             
             .jump-links ul {
                 grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .reviews-hero {
+                min-height: 280px;
+            }
+            
+            .reviews-hero-overlay {
+                padding: 2.5rem 0 2rem;
+            }
+            
+            .reviews-hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-rating p {
+                font-size: 1rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1rem;
             }
         }
     </style>

@@ -916,6 +916,11 @@
     height: 280px;
   }
 
+  .carousel-slide {
+    background-position: center center !important;
+    background-size: cover !important;
+  }
+
   .carousel-content h1 {
     font-size: 1.8rem;
   }

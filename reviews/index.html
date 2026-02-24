@@ -14,208 +14,340 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../cantina-theme.css">
     <style>
+        /* Reviews Hero Section */
+        .reviews-hero {
+            position: relative;
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.9), rgba(204, 0, 0, 0.8)), url('../community.jpg') center center / cover no-repeat;
+            color: white;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reviews-hero-overlay {
+            width: 100%;
+            background: linear-gradient(120deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+            padding: 5rem 0 4rem;
+        }
+        
+        .reviews-hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .reviews-hero-content h1 {
+            font-family: "Oswald", sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        
+        .hero-rating {
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-stars {
+            color: #ffa500;
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-rating p {
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .hero-tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.95;
+            margin: 0;
+        }
+        
+        /* Reviews Page Content */
         .reviews-page {
-            padding: 2rem 0 3rem;
+            padding: 3rem 0 4rem;
             background: #f8f9fa;
         }
+        
         .reviews-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
-        .reviews-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .reviews-header h1 {
-            color: var(--accent-gold, #d4a574);
-            margin-bottom: 1rem;
-            font-family: "Oswald", sans-serif;
-            font-size: clamp(2.4rem, 4vw + 1rem, 3.4rem);
-            text-transform: uppercase;
-        }
-        .rating-summary {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        .rating-summary .stars {
-            color: #ffa500;
-            font-size: 1.5rem;
-        }
+        
         .jump-links {
             background: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 12px;
-            margin-bottom: 2rem;
-            border: 1px solid #e9ecef;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            border: 2px solid var(--accent-gold, #d4a574);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
         }
+        
         .jump-links h2 {
             margin-top: 0;
-            margin-bottom: 1rem;
-            color: var(--text-dark, #333);
+            margin-bottom: 1.5rem;
+            color: var(--teal-deep, #0f766e);
             font-family: "Oswald", sans-serif;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            text-align: center;
         }
+        
         .jump-links ul {
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 0;
         }
+        
         .jump-links a {
-            color: var(--accent-gold, #d4a574);
+            color: white;
+            background: var(--accent-gold, #d4a574);
             text-decoration: none;
-            padding: 0.5rem;
+            padding: 1rem;
             display: block;
-            border-radius: 6px;
-            transition: background-color 0.2s;
-            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1rem;
         }
+        
         .jump-links a:hover {
-            background-color: #f8f9fa;
-            color: var(--teal-deep, #0f766e);
+            background: var(--teal-deep, #0f766e);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
+        
         .reviews-section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
+        
         .reviews-section h2 {
-            color: var(--text-dark, #333);
-            border-bottom: 2px solid var(--accent-gold, #d4a574);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            color: var(--teal-deep, #0f766e);
+            border-bottom: 3px solid var(--accent-gold, #d4a574);
+            padding-bottom: 0.75rem;
+            margin-bottom: 2.5rem;
             font-family: "Oswald", sans-serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             text-transform: uppercase;
+            font-weight: 700;
         }
+        
         .review-cards {
             display: grid;
             gap: 2rem;
         }
+        
         .review-card {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--accent-gold, #d4a574);
-            transition: transform 150ms ease, box-shadow 150ms ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid var(--accent-gold, #d4a574);
+            transition: all 0.3s ease;
         }
+        
         .review-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            border-left-color: var(--teal-deep, #0f766e);
         }
+        
         .review-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
-            gap: 1rem;
+            margin-bottom: 1.5rem;
+            gap: 1.5rem;
         }
+        
         .reviewer-info h3 {
-            margin: 0 0 0.25rem 0;
-            color: var(--text-dark, #333);
-            font-size: 1.1rem;
-            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            color: var(--teal-deep, #0f766e);
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: "Oswald", sans-serif;
         }
+        
         .reviewer-meta {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #666;
             margin: 0;
         }
+        
         .review-rating {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             flex-shrink: 0;
         }
+        
         .stars {
             color: #ffa500;
-            font-size: 1.2rem;
-            margin-bottom: 0.25rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
         }
+        
         .review-date {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #888;
         }
+        
         .review-text {
-            line-height: 1.6;
-            color: #444;
+            line-height: 1.8;
+            color: #333;
             margin: 0;
+            font-size: 1.05rem;
         }
+        
         .menu-favorites {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
             margin-bottom: 3rem;
+            border: 2px solid var(--teal-deep, #0f766e);
         }
+        
         .menu-favorites h2 {
-            color: var(--accent-gold, #d4a574);
-            margin-bottom: 1rem;
+            color: var(--teal-deep, #0f766e);
+            margin-bottom: 2rem;
             font-family: "Oswald", sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 700;
         }
+        
         .favorites-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
+        
         .favorite-item {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 6px;
+            background: linear-gradient(135deg, var(--teal-deep, #0f766e), var(--teal-medium, #14b8a6));
+            color: white;
+            padding: 1.5rem 1rem;
+            border-radius: 10px;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
+        
+        .favorite-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
         .allergen-notice {
             background: #fff3cd;
-            border: 1px solid #ffeeba;
-            padding: 1rem;
-            border-radius: 6px;
-            margin-top: 1rem;
+            border: 2px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
         }
+        
         .allergen-notice h4 {
             color: #856404;
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0.75rem 0;
+            font-family: "Oswald", sans-serif;
+            font-size: 1.2rem;
         }
+        
         .allergen-notice p {
             color: #856404;
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
+        
         .back-home {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
         }
+        
         .back-home a {
             background: var(--accent-gold, #d4a574);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 3rem;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             display: inline-block;
-            transition: background-color 0.2s;
-            font-weight: 600;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-family: "Oswald", sans-serif;
         }
+        
         .back-home a:hover {
             background: var(--teal-deep, #0f766e);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
+        
         .reviews-disclaimer {
             text-align: center;
-            font-size: 0.9rem;
             color: #666;
-            margin-top: 2rem;
+            font-size: 0.9rem;
             font-style: italic;
+            margin: 2rem 0 0;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
         }
+        
         @media (max-width: 768px) {
+            .reviews-hero {
+                min-height: 350px;
+            }
+            
+            .reviews-hero-overlay {
+                padding: 3rem 0 2.5rem;
+            }
+            
+            .hero-stars {
+                font-size: 2rem;
+            }
+            
+            .hero-rating p {
+                font-size: 1.1rem;
+            }
+            
             .review-header {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 1rem;
             }
+            
             .review-rating {
                 align-items: flex-start;
             }
+            
+            .review-card {
+                padding: 1.5rem;
+            }
+            
             .favorites-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .jump-links ul {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -252,6 +384,7 @@
               <li><a href="../private-events.html">Private Events</a></li>
               <li><a href="../careers.html">Careers</a></li>
               <li><a href="../community.html">Community</a></li>
+              <li><a href="index.html">Reviews</a></li>
             </ul>
           </nav>
           <a href="../our-story.html" class="btn btn-outline btn-sm header-story-btn">Our Story</a>
@@ -283,6 +416,7 @@
         <a href="../private-events.html" class="mobile-menu-item">Private Events</a>
         <a href="../careers.html" class="mobile-menu-item">Careers</a>
         <a href="../community.html" class="mobile-menu-item">Community</a>
+        <a href="index.html" class="mobile-menu-item">Reviews</a>
       </nav>
       <div class="mobile-menu-footer">
         <a href="#" class="mobile-menu-cta" data-order-modal-trigger>Order Online</a>
@@ -296,41 +430,32 @@
       </div>
     </div>
 
-    <main class="reviews-page">
+    <main>
+      <!-- Reviews Hero Section -->
+      <section class="reviews-hero" aria-labelledby="reviews-hero-title">
+        <div class="reviews-hero-overlay">
+          <div class="container reviews-hero-content">
+            <h1 id="reviews-hero-title">What Our Guests Are Saying</h1>
+            <div class="hero-rating">
+              <span class="hero-stars">★★★★★</span>
+              <p><strong>4.3 out of 5 stars</strong> from over 1,389 Google reviews</p>
+            </div>
+            <p class="hero-tagline">Authentic Tex-Mex that Richmond, Texas loves</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="reviews-page">
         <div class="container reviews-container">
-            <header class="reviews-header">
-                <h1>Customer Reviews</h1>
-                <div class="rating-summary">
-                    <span class="stars">★★★★★</span>
-                    <strong>4.3</strong> out of 5 stars based on <strong>1,389</strong> Google reviews
-                </div>
-            </header>
 
             <nav class="jump-links" aria-label="Page navigation">
                 <h2>Quick Navigation</h2>
                 <ul>
                     <li><a href="#featured-reviews">Featured Reviews</a></li>
-                    <li><a href="#menu-favorites">Menu Favorites</a></li>
                     <li><a href="#service-mentions">Service Mentions</a></li>
                     <li><a href="#more-reviews">More Reviews</a></li>
                 </ul>
             </nav>
-
-            <section id="menu-favorites" class="menu-favorites">
-                <h2>Menu Favorites Mentioned in Reviews</h2>
-                <div class="favorites-grid">
-                    <div class="favorite-item">🌮 <strong>Fajitas</strong></div>
-                    <div class="favorite-item">🍹 <strong>Top Shelf Margaritas</strong></div>
-                    <div class="favorite-item">🍤 <strong>Shrimp Enchiladas</strong></div>
-                    <div class="favorite-item">🐔 <strong>Pollo Marisco</strong></div>
-                    <div class="favorite-item">🥑 <strong>Chips & Salsa</strong></div>
-                    <div class="favorite-item">🥩 <strong>Steak Fajitas</strong></div>
-                    <div class="favorite-item">🧀 <strong>Cheese Dip</strong></div>
-                    <div class="favorite-item">🥑 <strong>Guacamole</strong></div>
-                    <div class="favorite-item">🍽️ <strong>Combination Platters</strong></div>
-                    <div class="favorite-item">🍺 <strong>Cold Beer</strong></div>
-                </div>
-            </section>
 
             <section id="featured-reviews" class="reviews-section">
                 <h2>Featured Reviews</h2>
@@ -527,6 +652,7 @@
 
             <p class="reviews-disclaimer">Reviews sourced from Google; displayed verbatim.</p>
         </div>
+      </div>
     </main>
 
     <footer class="brand-footer">

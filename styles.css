@@ -1532,6 +1532,19 @@ body {
   border-bottom: 2px solid transparent;
 }
 
+.mobile-menu-links a.app-download-btn {
+  background: none;
+  color: var(--teal-deep);
+  padding: 0.5rem 0;
+  border-radius: 0;
+  font-size: 0.95rem;
+}
+
+.mobile-menu-links a.app-download-btn:active {
+  background: none;
+  color: var(--chili);
+}
+
 .mobile-menu-links a:active {
   color: var(--chili);
   border-bottom-color: var(--chili);

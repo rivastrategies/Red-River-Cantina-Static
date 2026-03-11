@@ -167,4 +167,220 @@ document.addEventListener('DOMContentLoaded', () => {
       openModal();
     });
   });
+
+  // Party Room Modal
+  const PARTY_MODAL_ID = 'party-modal';
+  let partyLastFocusedElement = null;
+  let partyKeydownHandler = null;
+
+  const closePartyModal = () => {
+    const modal = document.getElementById(PARTY_MODAL_ID);
+    if (!modal) {
+      return;
+    }
+
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    body.style.overflow = '';
+
+    document.removeEventListener('keydown', partyKeydownHandler);
+
+    if (partyLastFocusedElement && typeof partyLastFocusedElement.focus === 'function') {
+      partyLastFocusedElement.focus();
+    }
+  };
+
+  const trapPartyFocus = (event) => {
+    if (event.key !== 'Tab') {
+      return;
+    }
+
+    const modal = document.getElementById(PARTY_MODAL_ID);
+    if (!modal || !modal.classList.contains('is-open')) {
+      return;
+    }
+
+    const focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+    const focusable = Array.from(modal.querySelectorAll(focusableSelectors)).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+
+    if (focusable.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  const openPartyModal = () => {
+    const modal = document.getElementById(PARTY_MODAL_ID);
+    if (!modal) {
+      return;
+    }
+
+    partyLastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    body.style.overflow = 'hidden';
+
+    const firstInput = modal.querySelector('input');
+    window.requestAnimationFrame(() => {
+      if (firstInput) {
+        firstInput.focus();
+      }
+    });
+
+    partyKeydownHandler = (event) => {
+      if (event.key === 'Escape') {
+        closePartyModal();
+        return;
+      }
+      trapPartyFocus(event);
+    };
+
+    document.addEventListener('keydown', partyKeydownHandler);
+  };
+
+  // Party modal triggers
+  const partyTriggers = document.querySelectorAll('[data-party-modal-trigger]');
+  partyTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      openPartyModal();
+    });
+  });
+
+  // Party modal close handlers
+  const partyModal = document.getElementById(PARTY_MODAL_ID);
+  if (partyModal) {
+    partyModal.addEventListener('click', (event) => {
+      if (event.target === partyModal) {
+        closePartyModal();
+      }
+    });
+
+    partyModal.querySelectorAll('[data-party-modal-close]').forEach((closeButton) => {
+      closeButton.addEventListener('click', closePartyModal);
+    });
+  }
+
+  // Catering Modal
+  const CATERING_MODAL_ID = 'catering-modal';
+  let cateringLastFocusedElement = null;
+  let cateringKeydownHandler = null;
+
+  const closeCateringModal = () => {
+    const modal = document.getElementById(CATERING_MODAL_ID);
+    if (!modal) {
+      return;
+    }
+
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    body.style.overflow = '';
+
+    document.removeEventListener('keydown', cateringKeydownHandler);
+
+    if (cateringLastFocusedElement && typeof cateringLastFocusedElement.focus === 'function') {
+      cateringLastFocusedElement.focus();
+    }
+  };
+
+  const trapCateringFocus = (event) => {
+    if (event.key !== 'Tab') {
+      return;
+    }
+
+    const modal = document.getElementById(CATERING_MODAL_ID);
+    if (!modal || !modal.classList.contains('is-open')) {
+      return;
+    }
+
+    const focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+    const focusable = Array.from(modal.querySelectorAll(focusableSelectors)).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+
+    if (focusable.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  const openCateringModal = () => {
+    const modal = document.getElementById(CATERING_MODAL_ID);
+    if (!modal) {
+      return;
+    }
+
+    cateringLastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    body.style.overflow = 'hidden';
+
+    const firstInput = modal.querySelector('input');
+    window.requestAnimationFrame(() => {
+      if (firstInput) {
+        firstInput.focus();
+      }
+    });
+
+    cateringKeydownHandler = (event) => {
+      if (event.key === 'Escape') {
+        closeCateringModal();
+        return;
+      }
+      trapCateringFocus(event);
+    };
+
+    document.addEventListener('keydown', cateringKeydownHandler);
+  };
+
+  // Catering modal triggers
+  const cateringTriggers = document.querySelectorAll('[data-catering-modal-trigger]');
+  cateringTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      openCateringModal();
+    });
+  });
+
+  // Catering modal close handlers
+  const cateringModal = document.getElementById(CATERING_MODAL_ID);
+  if (cateringModal) {
+    cateringModal.addEventListener('click', (event) => {
+      if (event.target === cateringModal) {
+        closeCateringModal();
+      }
+    });
+
+    cateringModal.querySelectorAll('[data-catering-modal-close]').forEach((closeButton) => {
+      closeButton.addEventListener('click', closeCateringModal);
+    });
+  }
 });

@@ -1051,6 +1051,178 @@ body {
   }
 }
 
+/* Party Room Modal Form Styles */
+.party-modal__dialog {
+  width: min(560px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.party-modal__form {
+  text-align: left;
+}
+
+.party-modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.party-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.party-modal__field span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.party-modal__field input,
+.party-modal__field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.party-modal__field input:focus,
+.party-modal__field textarea:focus {
+  outline: none;
+  border-color: var(--teal-mid);
+  box-shadow: 0 0 0 3px rgba(17, 94, 89, 0.1);
+}
+
+.party-modal__field input::placeholder,
+.party-modal__field textarea::placeholder {
+  color: #999;
+}
+
+.party-modal__field--full {
+  margin-bottom: 1rem;
+}
+
+.party-modal__field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.party-modal__submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 520px) {
+  .party-modal__row {
+    grid-template-columns: 1fr;
+  }
+  
+  .party-modal__dialog {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Catering Modal Styles */
+.catering-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(20, 30, 34, 0.68);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 60;
+}
+
+.catering-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.catering-modal__dialog {
+  position: relative;
+  width: min(780px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 2.4rem 2rem 2.1rem;
+  box-shadow: 0 24px 48px rgba(17, 94, 89, 0.18);
+}
+
+.catering-modal__close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+
+.catering-modal__close:hover,
+.catering-modal__close:focus {
+  color: var(--teal-deep);
+}
+
+.catering-modal__content {
+  text-align: left;
+}
+
+.catering-modal__content .booking-form-lede {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.catering-modal__content .eyebrow {
+  margin: 0 0 0.6rem;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: var(--teal-mid);
+}
+
+.catering-modal__content h2 {
+  margin: 0 0 0.85rem;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.95rem;
+  color: var(--teal-deep);
+}
+
+.catering-modal__content .booking-form-lede p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+  .catering-modal__dialog {
+    padding: 2rem 1.5rem;
+  }
+  
+  .catering-modal__content h2 {
+    font-size: 1.7rem;
+  }
+}
+
 .info-band,
 .brand-footer {
   background: linear-gradient(180deg, var(--teal-footer), var(--teal-footer-dark));

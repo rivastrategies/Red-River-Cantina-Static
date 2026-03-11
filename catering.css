@@ -189,6 +189,12 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
+.carousel-content .btn {
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
 .carousel-indicators {
   position: absolute;
   bottom: 2rem;
@@ -865,6 +871,57 @@
   color: #1a2a35;
   font-weight: 600;
   font-size: 1rem;
+}
+
+/* Section Dividers for Full-Service vs Fiesta Packs */
+.catering-section-divider {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.catering-section-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal-mid), transparent);
+}
+
+.full-service-header {
+  background: #f8f8f8;
+}
+
+.fiesta-packs-header {
+  background: #fff;
+  margin-top: 3rem;
+}
+
+.section-divider-title {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--chili);
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.section-divider-subtitle {
+  font-size: 1.25rem;
+  color: var(--teal-deep);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.section-divider-note {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+  font-style: italic;
 }
 
 @media (max-width: 980px) {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Red River Cantina | Full-Service Catering</title>
+    <title>Red River Cantina | Catering Services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,7 +43,7 @@
                 </ul>
               </li>
               <li><a href="catering.html">Catering</a></li>
-              <li><a href="private-events.html">Private Events</a></li>
+              <li><a href="private-events.html">Party Room</a></li>
               <li><a href="careers.html">Careers</a></li>
               <li><a href="community.html">Community</a></li>
               <li><a href="reviews/index.html">Reviews</a></li>
@@ -75,7 +75,7 @@
         <a href="gluten-free-menu.html" class="mobile-menu-item">Gluten Free | Vegetarian</a>
         <a href="bar-menu.html" class="mobile-menu-item">Bar Menu</a>
         <a href="catering.html" class="mobile-menu-item">Catering</a>
-        <a href="private-events.html" class="mobile-menu-item">Private Events</a>
+        <a href="private-events.html" class="mobile-menu-item">Party Room</a>
         <a href="careers.html" class="mobile-menu-item">Careers</a>
         <a href="community.html" class="mobile-menu-item">Community</a>
         <a href="reviews/index.html" class="mobile-menu-item">Reviews</a>
@@ -93,13 +93,14 @@
     </div>
 
     <main>
-      <section class="catering-hero-carousel" aria-label="Full-Service Catering Carousel">
+      <section class="catering-hero-carousel" aria-label="Catering Services Carousel">
         <div class="carousel-container">
           <div class="carousel-slide slide-1">
             <div class="slide-overlay"></div>
             <div class="container carousel-content">
-              <h1>Full-Service Catering</h1>
-              <p class="slide-tagline">No matter the occasion, you can bet it will taste better with Red River Cantina.</p>
+              <h1>Cantina Catering</h1>
+              <p class="slide-tagline">Full-Service Catering & Fiesta Packs for Pick-Up or Delivery</p>
+              <button class="btn btn-modern" data-catering-modal-trigger>Book Catering</button>
             </div>
           </div>
           <div class="carousel-slide slide-2">
@@ -164,16 +165,6 @@
         </div>
       </section>
 
-      <section class="book-catering-cta" aria-label="Book Full-Service Catering">
-        <div class="container">
-          <div class="cta-card">
-            <h2>Ready to Plan Your Event?</h2>
-            <p>Connect with our catering specialists to build a custom menu, schedule on-site grilling, and secure your event date.</p>
-            <a class="btn btn-modern" href="book-catering.html">Book Catering</a>
-          </div>
-        </div>
-      </section>
-
       <section class="catering-features" aria-label="Menu Pricing Features">
         <div class="container catering-features-grid">
           <article class="feature-box feature-fiesta">
@@ -202,6 +193,15 @@
             <p>On-Site Grilling is available and can be added to your proposal.</p>
             <p>Gratuity is at your discretion.</p>
           </article>
+        </div>
+      </section>
+
+      <!-- FULL-SERVICE CATERING SECTION -->
+      <section class="catering-section-divider full-service-header">
+        <div class="container">
+          <h2 class="section-divider-title">Full-Service Catering</h2>
+          <p class="section-divider-subtitle">Complete catering service with setup, staff, and professional presentation</p>
+          <p class="section-divider-note">40 Guest minimum charge for all full-service menu items</p>
         </div>
       </section>
 
@@ -422,15 +422,17 @@
         </div>
       </section>
 
+      <!-- FIESTA PACKS SECTION -->
+      <section class="catering-section-divider fiesta-packs-header">
+        <div class="container">
+          <h2 class="section-divider-title">Fiesta Packs</h2>
+          <p class="section-divider-subtitle">Available for Pick-Up &amp; Drop-Off Delivery</p>
+          <p class="section-divider-note">Complimentary disposable plates, flatware &amp; serving utensils available upon request</p>
+        </div>
+      </section>
+
       <section class="menu-section menu-fiesta-packs" aria-label="Fiesta Packs">
         <div class="container">
-          <p class="fiesta-intro">
-            <strong>Available for Pick-Up &amp; Delivery</strong>
-          </p>
-          <p class="fiesta-note">
-            Complimentary disposable plates, flatware &amp; serving utensils are available upon request.
-          </p>
-
           <div class="fiesta-packs-grid">
             <article class="fiesta-category">
               <h2>Enchilada Packs</h2>
@@ -669,9 +671,9 @@
         </div>
       </section>
 
-      <section class="menu-section menu-margaritas" aria-label="Margarita Machines">
+      <section class="menu-section menu-margaritas" aria-label="Margaritas To-Go">
         <div class="container">
-          <h2><span class="margarita-highlight">Margarita</span> Machines</h2>
+          <h2><span class="margarita-highlight">Margaritas</span> To-Go</h2>
           <div class="margarita-machines">
             <article class="margarita-option">
               <h4>Original <span class="margarita-highlight">Margarita</span> - Frozen or Rocks</h4>
@@ -787,6 +789,86 @@
     </footer>
 
     <a href="#" class="sticky-order-btn" data-order-modal-trigger>Order Online</a>
+
+    <!-- Catering Booking Modal -->
+    <div class="catering-modal" id="catering-modal" aria-hidden="true" role="dialog" aria-labelledby="catering-modal-title">
+      <div class="catering-modal__dialog" tabindex="-1">
+        <button type="button" class="catering-modal__close" data-catering-modal-close aria-label="Close catering booking form">×</button>
+        <div class="catering-modal__content">
+          <div class="booking-form-lede">
+            <p class="eyebrow">Full-Service Catering Request</p>
+            <h2 id="catering-modal-title">Book Your Event</h2>
+            <p>Complete the request form and our catering team will confirm availability, menu selections, and pricing.</p>
+          </div>
+          <form class="career-application-form" action="#" method="post">
+            <fieldset>
+              <legend>Contact Information</legend>
+              <div class="form-grid">
+                <label class="career-field">
+                  <span>First Name</span>
+                  <input type="text" name="firstName" autocomplete="given-name" required />
+                </label>
+                <label class="career-field">
+                  <span>Last Name</span>
+                  <input type="text" name="lastName" autocomplete="family-name" required />
+                </label>
+                <label class="career-field">
+                  <span>Email</span>
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+                <label class="career-field">
+                  <span>Confirm Email</span>
+                  <input type="email" name="confirmEmail" autocomplete="email" required />
+                </label>
+                <label class="career-field">
+                  <span>Phone Number</span>
+                  <input type="tel" name="phone" placeholder="###-###-####" autocomplete="tel" required />
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Event Details</legend>
+              <div class="form-grid">
+                <label class="career-field">
+                  <span>Catering Style</span>
+                  <select name="cateringStyle" required>
+                    <option value="" disabled selected>Select a style</option>
+                    <option value="fiesta">Fiesta Style</option>
+                    <option value="elegant">Elegant Style</option>
+                    <option value="not-sure">Not Sure Yet</option>
+                  </select>
+                </label>
+                <label class="career-field">
+                  <span>Party Size</span>
+                  <input type="number" name="partySize" min="1" step="1" required />
+                </label>
+                <label class="career-field">
+                  <span>Event Type</span>
+                  <input type="text" name="eventType" placeholder="Wedding, Corporate, etc." required />
+                </label>
+                <label class="career-field">
+                  <span>Event Date</span>
+                  <input type="date" name="eventDate" required />
+                </label>
+                <label class="career-field">
+                  <span>Event Time</span>
+                  <input type="time" name="eventTime" required />
+                </label>
+                <label class="career-field wide">
+                  <span>Additional Details</span>
+                  <textarea name="message" rows="4" placeholder="Let us know about venue, menu requests, or special services." required></textarea>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-modern">Submit Catering Request</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="site.js"></script>
   </body>

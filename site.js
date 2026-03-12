@@ -491,4 +491,79 @@ document.addEventListener('DOMContentLoaded', () => {
       closeButton.addEventListener('click', closeConcernsModal);
     });
   }
+
+  // Concerns form submission (Formspree)
+  const concernsForm = document.querySelector('.concerns-modal__form');
+  if (concernsForm instanceof HTMLFormElement) {
+    const submitButton = concernsForm.querySelector('button[type="submit"]');
+    const statusElement = concernsForm.querySelector('.concerns-modal__status');
+
+    const setFormStatus = (type, message) => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = message;
+      statusElement.classList.add('is-visible');
+      statusElement.classList.remove('is-loading', 'is-success', 'is-error');
+
+      if (type) {
+        statusElement.classList.add(type);
+      }
+    };
+
+    const resetFormStatus = () => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = '';
+      statusElement.classList.remove('is-visible', 'is-loading', 'is-success', 'is-error');
+    };
+
+    concernsForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!concernsForm.checkValidity()) {
+        concernsForm.reportValidity();
+        return;
+      }
+
+      const action = concernsForm.getAttribute('action');
+      if (!action) {
+        setFormStatus('is-error', 'Unable to send right now. Please call us at (281) 277-5060.');
+        return;
+      }
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+      setFormStatus('is-loading', 'Sending your message...');
+
+      try {
+        const response = await fetch(action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: new FormData(concernsForm),
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        concernsForm.reset();
+        setFormStatus('is-success', 'Thanks for contacting Red River Cantina. Our team will follow up shortly.');
+      } catch (_error) {
+        setFormStatus('is-error', 'There was a problem sending your message. Please try again or call us at (281) 277-5060.');
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+
+    concernsForm.addEventListener('input', resetFormStatus);
+  }
 });

@@ -461,7 +461,9 @@
         <p class="order-modal__eyebrow">Customer Feedback</p>
         <h2 class="order-modal__title" id="concerns-modal-title">Questions or Concerns?</h2>
         <p class="order-modal__subtitle">We value your feedback and are committed to providing the best experience. Share your thoughts and we'll get back to you as soon as possible.</p>
-        <form class="concerns-modal__form" action="#" method="post">
+        <form class="concerns-modal__form" action="https://formspree.io/f/mdawzzzn" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Red River Cantina - Questions or Concerns" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="visually-hidden" aria-hidden="true" />
           <div class="concerns-modal__row">
             <label class="concerns-modal__field">
               <span>Name *</span>
@@ -480,6 +482,7 @@
             <span>Message *</span>
             <textarea name="message" rows="5" placeholder="Please share your questions or concerns..." required></textarea>
           </label>
+          <p class="concerns-modal__status" aria-live="polite"></p>
           <button type="submit" class="btn btn-modern concerns-modal__submit">Send Message</button>
         </form>
       </div>

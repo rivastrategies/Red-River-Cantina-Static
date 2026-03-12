@@ -384,6 +384,118 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Catering form submission (Formspree)
+  const cateringForms = document.querySelectorAll('form[data-catering-form]');
+  cateringForms.forEach((cateringForm) => {
+    if (!(cateringForm instanceof HTMLFormElement)) {
+      return;
+    }
+
+    const submitButton = cateringForm.querySelector('button[type="submit"]');
+    const statusElement = cateringForm.querySelector('.form-submit-status');
+
+    const setCateringStatus = (type, message) => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = message;
+      statusElement.classList.add('is-visible');
+      statusElement.classList.remove('is-loading', 'is-success', 'is-error');
+
+      if (type) {
+        statusElement.classList.add(type);
+      }
+    };
+
+    const resetCateringStatus = () => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = '';
+      statusElement.classList.remove('is-visible', 'is-loading', 'is-success', 'is-error');
+    };
+
+    cateringForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!cateringForm.checkValidity()) {
+        cateringForm.reportValidity();
+        return;
+      }
+
+      const emailField = cateringForm.querySelector('input[name="email"]');
+      const confirmEmailField = cateringForm.querySelector('input[name="confirmEmail"]');
+      if (
+        emailField instanceof HTMLInputElement &&
+        confirmEmailField instanceof HTMLInputElement &&
+        emailField.value.trim() !== confirmEmailField.value.trim()
+      ) {
+        setCateringStatus('is-error', 'Email and Confirm Email must match.');
+        confirmEmailField.focus();
+        return;
+      }
+
+      const messageField = cateringForm.querySelector('textarea[name="message"]');
+      const messageText = messageField instanceof HTMLTextAreaElement ? messageField.value.trim() : '';
+      if (messageText.length < 10) {
+        setCateringStatus('is-error', 'Please include a little more detail about your event.');
+        if (messageField instanceof HTMLTextAreaElement) {
+          messageField.focus();
+        }
+        return;
+      }
+
+      const action = cateringForm.getAttribute('action');
+      if (!action) {
+        setCateringStatus('is-error', 'Unable to send right now. Please call us at 346-279-1192.');
+        return;
+      }
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+      setCateringStatus('is-loading', 'Sending your catering request...');
+
+      try {
+        const formData = new FormData(cateringForm);
+        formData.set('_gotcha', '');
+
+        const emailValue = formData.get('email');
+        if (typeof emailValue === 'string' && emailValue.trim()) {
+          formData.set('_replyto', emailValue.trim());
+        }
+
+        formData.set('source_page', window.location.pathname);
+        formData.set('submitted_at', new Date().toISOString());
+
+        const response = await fetch(action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        cateringForm.reset();
+        setCateringStatus('is-success', 'Thanks for your catering request. Our team will follow up shortly.');
+      } catch (_error) {
+        setCateringStatus('is-error', 'There was a problem sending your request. Please try again or call us at 346-279-1192.');
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+
+    cateringForm.addEventListener('input', resetCateringStatus);
+  });
+
   // Concerns Modal
   const CONCERNS_MODAL_ID = 'concerns-modal';
   let concernsLastFocusedElement = null;

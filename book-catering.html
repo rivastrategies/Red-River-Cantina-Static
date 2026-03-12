@@ -100,7 +100,9 @@
             <h2 id="booking-form-title">Tell Us About Your Event</h2>
             <p>Complete the request form and our catering team will confirm availability, menu selections, and pricing.</p>
           </div>
-          <form class="career-application-form" action="#" method="post">
+          <form class="career-application-form" data-catering-form action="https://formspree.io/f/mjgarred" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Red River Cantina - Catering Request" />
+            <input type="hidden" name="form_name" value="Catering Request" />
             <fieldset>
               <legend>Contact Information</legend>
               <div class="form-grid">
@@ -163,6 +165,7 @@
             </fieldset>
 
             <div class="form-actions">
+              <p class="form-submit-status" aria-live="polite"></p>
               <button type="submit" class="btn btn-modern">Submit Catering Request</button>
             </div>
           </form>

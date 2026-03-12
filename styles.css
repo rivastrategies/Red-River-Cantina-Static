@@ -2109,11 +2109,44 @@ body {
 .form-actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 0.85rem;
 }
 
 .form-actions .btn {
   min-width: 220px;
   text-align: center;
+}
+
+.form-submit-status {
+  display: none;
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.form-submit-status.is-visible {
+  display: block;
+}
+
+.form-submit-status.is-loading {
+  background: #eef7f6;
+  border: 1px solid #b9e5e1;
+  color: #0f5d57;
+}
+
+.form-submit-status.is-success {
+  background: #eaf8ef;
+  border: 1px solid #bfe6cc;
+  color: #1c6b3a;
+}
+
+.form-submit-status.is-error {
+  background: #fff0f0;
+  border: 1px solid #ffd0d0;
+  color: #a12a2a;
 }
 
 @media (max-width: 720px) {
@@ -2137,6 +2170,7 @@ body {
 
   .form-actions {
     justify-content: center;
+    flex-direction: column;
   }
 }
 

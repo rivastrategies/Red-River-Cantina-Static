@@ -383,4 +383,112 @@ document.addEventListener('DOMContentLoaded', () => {
       closeButton.addEventListener('click', closeCateringModal);
     });
   }
+
+  // Concerns Modal
+  const CONCERNS_MODAL_ID = 'concerns-modal';
+  let concernsLastFocusedElement = null;
+  let concernsKeydownHandler = null;
+
+  const closeConcernsModal = () => {
+    const modal = document.getElementById(CONCERNS_MODAL_ID);
+    if (!modal) {
+      return;
+    }
+
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    body.style.overflow = '';
+
+    document.removeEventListener('keydown', concernsKeydownHandler);
+
+    if (concernsLastFocusedElement && typeof concernsLastFocusedElement.focus === 'function') {
+      concernsLastFocusedElement.focus();
+    }
+  };
+
+  const trapConcernsFocus = (event) => {
+    if (event.key !== 'Tab') {
+      return;
+    }
+
+    const modal = document.getElementById(CONCERNS_MODAL_ID);
+    if (!modal || !modal.classList.contains('is-open')) {
+      return;
+    }
+
+    const focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+    const focusable = Array.from(modal.querySelectorAll(focusableSelectors)).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+
+    if (focusable.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  const openConcernsModal = () => {
+    const modal = document.getElementById(CONCERNS_MODAL_ID);
+    if (!modal) {
+      return;
+    }
+
+    concernsLastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    body.style.overflow = 'hidden';
+
+    const firstInput = modal.querySelector('input');
+    window.requestAnimationFrame(() => {
+      if (firstInput) {
+        firstInput.focus();
+      }
+    });
+
+    concernsKeydownHandler = (event) => {
+      if (event.key === 'Escape') {
+        closeConcernsModal();
+        return;
+      }
+      trapConcernsFocus(event);
+    };
+
+    document.addEventListener('keydown', concernsKeydownHandler);
+  };
+
+  // Concerns modal triggers
+  const concernsTriggers = document.querySelectorAll('[data-concerns-modal-trigger]');
+  concernsTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      openConcernsModal();
+    });
+  });
+
+  // Concerns modal close handlers
+  const concernsModal = document.getElementById(CONCERNS_MODAL_ID);
+  if (concernsModal) {
+    concernsModal.addEventListener('click', (event) => {
+      if (event.target === concernsModal) {
+        closeConcernsModal();
+      }
+    });
+
+    concernsModal.querySelectorAll('[data-concerns-modal-close]').forEach((closeButton) => {
+      closeButton.addEventListener('click', closeConcernsModal);
+    });
+  }
 });

@@ -592,6 +592,92 @@ document.addEventListener('DOMContentLoaded', () => {
     cateringForm.addEventListener('input', resetCateringStatus);
   });
 
+  // Careers form submission (Formspree)
+  const careersForm = document.querySelector('form[data-careers-form]');
+  if (careersForm instanceof HTMLFormElement) {
+    const submitButton = careersForm.querySelector('button[type="submit"]');
+    const statusElement = careersForm.querySelector('.form-submit-status');
+
+    const setCareersStatus = (type, message) => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = message;
+      statusElement.classList.add('is-visible');
+      statusElement.classList.remove('is-loading', 'is-success', 'is-error');
+
+      if (type) {
+        statusElement.classList.add(type);
+      }
+    };
+
+    const resetCareersStatus = () => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = '';
+      statusElement.classList.remove('is-visible', 'is-loading', 'is-success', 'is-error');
+    };
+
+    careersForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!careersForm.checkValidity()) {
+        careersForm.reportValidity();
+        return;
+      }
+
+      const action = careersForm.getAttribute('action');
+      if (!action) {
+        setCareersStatus('is-error', 'Unable to send right now. Please call us at 346-279-1192.');
+        return;
+      }
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+      setCareersStatus('is-loading', 'Sending your application...');
+
+      try {
+        const formData = new FormData(careersForm);
+        formData.set('_gotcha', '');
+
+        const emailValue = formData.get('email');
+        if (typeof emailValue === 'string' && emailValue.trim()) {
+          formData.set('_replyto', emailValue.trim());
+        }
+
+        formData.set('source_page', window.location.pathname);
+        formData.set('submitted_at', new Date().toISOString());
+
+        const response = await fetch(action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        careersForm.reset();
+        setCareersStatus('is-success', 'Thanks for applying to Red River Cantina. Our team will review your application and follow up.');
+      } catch (_error) {
+        setCareersStatus('is-error', 'There was a problem sending your application. Please try again or call us at 346-279-1192.');
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+
+    careersForm.addEventListener('input', resetCareersStatus);
+  }
+
   // Concerns Modal
   const CONCERNS_MODAL_ID = 'concerns-modal';
   let concernsLastFocusedElement = null;

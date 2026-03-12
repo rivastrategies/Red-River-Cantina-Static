@@ -141,7 +141,9 @@
             <h2 id="careers-form-title">Employment Application</h2>
             <p>Please complete every section below so we can learn more about your background and experience.</p>
           </div>
-          <form class="career-application-form" action="#" method="post">
+          <form class="career-application-form" data-careers-form action="https://formspree.io/f/xojkwwyd" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Red River Cantina - Careers Application" />
+            <input type="hidden" name="form_name" value="Careers Application" />
             <fieldset>
               <legend>Personal Information</legend>
               <div class="form-grid">
@@ -580,6 +582,7 @@
             </fieldset>
 
             <div class="form-actions">
+              <p class="form-submit-status" aria-live="polite"></p>
               <button type="submit" class="btn btn-modern">Submit Application</button>
             </div>
           </form>

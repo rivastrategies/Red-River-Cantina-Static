@@ -131,7 +131,9 @@
             <h2 id="community-form-title">Spirit Night Application</h2>
             <p>Complete the form below and our community outreach team will contact you within two business days.</p>
           </div>
-          <form class="career-application-form" action="#" method="post">
+          <form class="career-application-form" data-community-form action="https://formspree.io/f/xwvrbbyw" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Red River Cantina - Community Spirit Night Application" />
+            <input type="hidden" name="form_name" value="Community Spirit Night Application" />
             <fieldset>
               <legend>Organization Information</legend>
               <div class="form-grid">
@@ -222,6 +224,7 @@
             </fieldset>
 
             <div class="form-actions">
+              <p class="form-submit-status" aria-live="polite"></p>
               <button type="submit" class="btn btn-modern">Submit Application</button>
             </div>
           </form>

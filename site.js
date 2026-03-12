@@ -678,6 +678,92 @@ document.addEventListener('DOMContentLoaded', () => {
     careersForm.addEventListener('input', resetCareersStatus);
   }
 
+  // Community form submission (Formspree)
+  const communityForm = document.querySelector('form[data-community-form]');
+  if (communityForm instanceof HTMLFormElement) {
+    const submitButton = communityForm.querySelector('button[type="submit"]');
+    const statusElement = communityForm.querySelector('.form-submit-status');
+
+    const setCommunityStatus = (type, message) => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = message;
+      statusElement.classList.add('is-visible');
+      statusElement.classList.remove('is-loading', 'is-success', 'is-error');
+
+      if (type) {
+        statusElement.classList.add(type);
+      }
+    };
+
+    const resetCommunityStatus = () => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = '';
+      statusElement.classList.remove('is-visible', 'is-loading', 'is-success', 'is-error');
+    };
+
+    communityForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!communityForm.checkValidity()) {
+        communityForm.reportValidity();
+        return;
+      }
+
+      const action = communityForm.getAttribute('action');
+      if (!action) {
+        setCommunityStatus('is-error', 'Unable to send right now. Please call us at 346-279-1192.');
+        return;
+      }
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+      setCommunityStatus('is-loading', 'Sending your application...');
+
+      try {
+        const formData = new FormData(communityForm);
+        formData.set('_gotcha', '');
+
+        const emailValue = formData.get('contactEmail');
+        if (typeof emailValue === 'string' && emailValue.trim()) {
+          formData.set('_replyto', emailValue.trim());
+        }
+
+        formData.set('source_page', window.location.pathname);
+        formData.set('submitted_at', new Date().toISOString());
+
+        const response = await fetch(action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        communityForm.reset();
+        setCommunityStatus('is-success', 'Thanks for your Spirit Night application. Our team will follow up within two business days.');
+      } catch (_error) {
+        setCommunityStatus('is-error', 'There was a problem sending your application. Please try again or call us at 346-279-1192.');
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+
+    communityForm.addEventListener('input', resetCommunityStatus);
+  }
+
   // Concerns Modal
   const CONCERNS_MODAL_ID = 'concerns-modal';
   let concernsLastFocusedElement = null;

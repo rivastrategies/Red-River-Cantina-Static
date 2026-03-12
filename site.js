@@ -535,18 +535,38 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      const messageField = concernsForm.querySelector('textarea[name="message"]');
+      const messageText = messageField instanceof HTMLTextAreaElement ? messageField.value.trim() : '';
+      if (messageText.length < 10) {
+        setFormStatus('is-error', 'Please include a little more detail so we can help you quickly.');
+        if (messageField instanceof HTMLTextAreaElement) {
+          messageField.focus();
+        }
+        return;
+      }
+
       if (submitButton instanceof HTMLButtonElement) {
         submitButton.disabled = true;
       }
       setFormStatus('is-loading', 'Sending your message...');
 
       try {
+        const formData = new FormData(concernsForm);
+        // Keep honeypot empty even if browser tools inject values.
+        formData.set('_gotcha', '');
+        const emailValue = formData.get('email');
+        if (typeof emailValue === 'string' && emailValue.trim()) {
+          formData.set('_replyto', emailValue.trim());
+        }
+        formData.set('source_page', window.location.pathname);
+        formData.set('submitted_at', new Date().toISOString());
+
         const response = await fetch(action, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
           },
-          body: new FormData(concernsForm),
+          body: formData,
         });
 
         if (!response.ok) {

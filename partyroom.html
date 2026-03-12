@@ -389,7 +389,9 @@
         <p class="order-modal__eyebrow">League City, Texas</p>
         <h2 class="order-modal__title" id="party-modal-title">Schedule Your Party</h2>
         <p class="order-modal__subtitle">Connect with our event coordinator to create a custom menu, arrange room setup, and secure your celebration date.</p>
-        <form class="party-modal__form" action="#" method="post">
+        <form class="party-modal__form" data-party-form action="https://formspree.io/f/mojkwwpd" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Red River Cantina - Party Room Inquiry" />
+          <input type="hidden" name="form_name" value="Party Room Inquiry" />
           <div class="party-modal__row">
             <label class="party-modal__field">
               <span>Name *</span>
@@ -418,6 +420,7 @@
             <span>Message</span>
             <textarea name="message" rows="4" placeholder="Tell us about your event..."></textarea>
           </label>
+          <p class="form-submit-status party-modal__status" aria-live="polite"></p>
           <button type="submit" class="btn btn-modern party-modal__submit">Submit Inquiry</button>
         </form>
       </div>

@@ -1131,6 +1131,10 @@ body {
   margin-top: 0.5rem;
 }
 
+.party-modal__status {
+  margin: 0 0 0.85rem;
+}
+
 @media (max-width: 520px) {
   .party-modal__row {
     grid-template-columns: 1fr;

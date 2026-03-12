@@ -276,6 +276,102 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Party Room form submission (Formspree)
+  const partyForm = document.querySelector('form[data-party-form]');
+  if (partyForm instanceof HTMLFormElement) {
+    const submitButton = partyForm.querySelector('button[type="submit"]');
+    const statusElement = partyForm.querySelector('.form-submit-status');
+
+    const setPartyStatus = (type, message) => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = message;
+      statusElement.classList.add('is-visible');
+      statusElement.classList.remove('is-loading', 'is-success', 'is-error');
+
+      if (type) {
+        statusElement.classList.add(type);
+      }
+    };
+
+    const resetPartyStatus = () => {
+      if (!(statusElement instanceof HTMLElement)) {
+        return;
+      }
+
+      statusElement.textContent = '';
+      statusElement.classList.remove('is-visible', 'is-loading', 'is-success', 'is-error');
+    };
+
+    partyForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!partyForm.checkValidity()) {
+        partyForm.reportValidity();
+        return;
+      }
+
+      const action = partyForm.getAttribute('action');
+      if (!action) {
+        setPartyStatus('is-error', 'Unable to send right now. Please call us at 346-279-1192.');
+        return;
+      }
+
+      const messageField = partyForm.querySelector('textarea[name="message"]');
+      const messageText = messageField instanceof HTMLTextAreaElement ? messageField.value.trim() : '';
+      if (messageText && messageText.length < 10) {
+        setPartyStatus('is-error', 'Please add a bit more detail or leave the message blank.');
+        if (messageField instanceof HTMLTextAreaElement) {
+          messageField.focus();
+        }
+        return;
+      }
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+      setPartyStatus('is-loading', 'Sending your inquiry...');
+
+      try {
+        const formData = new FormData(partyForm);
+        formData.set('_gotcha', '');
+
+        const emailValue = formData.get('email');
+        if (typeof emailValue === 'string' && emailValue.trim()) {
+          formData.set('_replyto', emailValue.trim());
+        }
+
+        formData.set('source_page', window.location.pathname);
+        formData.set('submitted_at', new Date().toISOString());
+
+        const response = await fetch(action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        partyForm.reset();
+        setPartyStatus('is-success', 'Thanks for contacting Red River BBQ about the Party Room. Our team will follow up shortly.');
+      } catch (_error) {
+        setPartyStatus('is-error', 'There was a problem sending your inquiry. Please try again or call us at 346-279-1192.');
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+
+    partyForm.addEventListener('input', resetPartyStatus);
+  }
+
   // Catering Modal
   const CATERING_MODAL_ID = 'catering-modal';
   let cateringLastFocusedElement = null;

@@ -191,7 +191,7 @@ body {
 .branding-inner {
   min-height: 76px;
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto 1fr auto auto auto;
   align-items: center;
   gap: 1rem;
 }

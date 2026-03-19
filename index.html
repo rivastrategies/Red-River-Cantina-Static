@@ -4,8 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Red River Cantina | Guest Reviews</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="rrcLogo (1).png" />
+    <link rel="apple-touch-icon" href="rrcLogo (1).png" />
+    
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link rel="dns-prefetch" href="https://transparenttextures.com" />
+    
+    <!-- Critical Image Preloading -->
+    <link rel="preload" as="image" href="RRCBrand.png" fetchpriority="high" />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -28,7 +41,7 @@
       <div class="branding-bar">
         <div class="container branding-inner">
           <a class="logo" href="#" aria-label="Red River Cantina Home">
-            <img src="RRCBrand.png" alt="Red River Cantina" style="height: 80px; display: block;">
+            <img src="RRCBrand.png" alt="Red River Cantina" style="height: 80px; display: block;" fetchpriority="high" decoding="async">
           </a>
           <nav aria-label="Primary Navigation">
             <ul class="nav-links">
@@ -64,7 +77,7 @@
     <div class="mobile-menu-overlay">
       <div class="mobile-menu-header">
         <a href="index.html" class="mobile-menu-logo">
-          <img src="RRCBrand.png" alt="Red River Cantina" style="height: 50px;">
+          <img src="RRCBrand.png" alt="Red River Cantina" style="height: 50px;" decoding="async">
         </a>
         <button class="mobile-menu-close" aria-label="Close Menu">&times;</button>
       </div>
@@ -211,7 +224,7 @@
           <div class="heritage-feature-grid">
             <article class="heritage-manager-card">
               <img
-                src="./ShaneSwopeRRCRichmond.jpg"
+                src="./ShaneSwopeRRCRichmond.webp"
                 alt="Shane Swope - General Manager"
               />
               <h3>Shane Swope</h3>
@@ -358,23 +371,23 @@
     <footer class="brand-footer">
       <div class="container logos-row">
         <a href="https://redriverbbq.com/league-city/" class="location-logo" target="_blank" rel="noopener">
-          <img src="rrbbqLogo.png" alt="Red River Bar & Grill" class="logo-image">
+          <img src="rrbbqLogo.png" alt="Red River Bar & Grill" class="logo-image" loading="lazy" decoding="async">
           <div class="location-text">Red River Bar & Grill<br>League City TX</div>
         </a>
         <div class="location-logo">
-          <img src="RRCBrand.png" alt="Red River Cantina" class="logo-image">
+          <img src="RRCBrand.png" alt="Red River Cantina" class="logo-image" loading="lazy" decoding="async">
           <div class="location-text">Red River Cantina<br>League City TX</div>
         </div>
         <div class="location-logo">
-          <img src="RRCBrand.png" alt="Red River Cantina" class="logo-image">
+          <img src="RRCBrand.png" alt="Red River Cantina" class="logo-image" loading="lazy" decoding="async">
           <div class="location-text">Red River Cantina<br>Richmond TX</div>
         </div>
         <a href="https://redriverbbq.com/katy/" class="location-logo" target="_blank" rel="noopener">
-          <img src="rrbbqbLogo.png" alt="Red River Bar-B-Que & Burger" class="logo-image">
+          <img src="rrbbqbLogo.png" alt="Red River Bar-B-Que & Burger" class="logo-image" loading="lazy" decoding="async">
           <div class="location-text">Red River Bar-B-Que & Burger<br>Katy TX</div>
         </a>
         <div class="location-logo">
-          <img src="kiersh co white trans.png" alt="Kiersh & Co." class="logo-image">
+          <img src="kiersh co white trans.png" alt="Kiersh & Co." class="logo-image" loading="lazy" decoding="async">
           <div class="location-text">Kiersh & Co.<br>Catering & Events</div>
         </div>
       </div>
@@ -431,6 +444,17 @@
     </div>
 
     <script src="site.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW registration failed:', err));
+        });
+      }
+    </script>
   
     
     <script type="application/ld+json">

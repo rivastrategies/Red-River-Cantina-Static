@@ -4,8 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Red River Cantina | Gluten Free Menu</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="rrcLogo (1).png" />
+    <link rel="apple-touch-icon" href="rrcLogo (1).png" />
+    
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link rel="dns-prefetch" href="https://transparenttextures.com" />
+    
+    <!-- Critical Image Preloading -->
+    <link rel="preload" as="image" href="RRCBrand.png" fetchpriority="high" />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -346,6 +359,17 @@
     <a href="#" class="sticky-order-btn" data-order-modal-trigger>Order Online</a>
 
     <script src="site.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW registration failed:', err));
+        });
+      }
+    </script>
   
     
     <script type="application/ld+json">

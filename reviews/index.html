@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Reviews - Red River Cantina | Richmond, TX</title>
     <meta name="description" content="Read authentic customer reviews of Red River Cantina in Richmond, Texas. See what guests say about our food, service, and atmosphere.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../rrcLogo (1).png" />
+    <link rel="apple-touch-icon" href="../rrcLogo (1).png" />
+    
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link rel="dns-prefetch" href="https://transparenttextures.com" />
+    
+    <!-- Critical Image Preloading -->
+    <link rel="preload" as="image" href="../RRCBrand.png" fetchpriority="high" />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -17,7 +30,7 @@
         /* Reviews Hero Section */
         .reviews-hero {
             position: relative;
-            background: linear-gradient(135deg, rgba(15, 118, 110, 0.9), rgba(204, 0, 0, 0.8)), url('../community.jpg') center top / cover no-repeat;
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.9), rgba(204, 0, 0, 0.8)), url('../community.webp') center top / cover no-repeat;
             color: white;
             min-height: 700px;
             display: flex;
@@ -719,6 +732,17 @@
     </footer>
 
     <script src="../site.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../sw.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW registration failed:', err));
+        });
+      }
+    </script>
 
     <a href="#" class="sticky-order-btn" data-order-modal-trigger>Order Online</a>
 

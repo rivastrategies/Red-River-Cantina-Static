@@ -343,6 +343,16 @@ document.addEventListener('DOMContentLoaded', () => {
           formData.set('_replyto', emailValue.trim());
         }
 
+        // Generate unique subject
+        const name = formData.get('name') || '';
+        const eventDate = formData.get('eventDate') || '';
+        const timestamp = new Date().toISOString();
+        let subject = 'Red River Cantina Party Room Inquiry';
+        if (name) subject += ` - ${name}`;
+        if (eventDate) subject += ` - ${eventDate}`;
+        subject += ` - ${timestamp}`;
+        formData.set('_subject', subject);
+
         formData.set('source_page', window.location.pathname);
         formData.set('submitted_at', new Date().toISOString());
 
@@ -563,6 +573,22 @@ document.addEventListener('DOMContentLoaded', () => {
           formData.set('_replyto', emailValue.trim());
         }
 
+        // Generate unique subject
+        const firstName = formData.get('firstName') || '';
+        const lastName = formData.get('lastName') || '';
+        const name = formData.get('name') || '';
+        const eventDate = formData.get('eventDate') || '';
+        const timestamp = new Date().toISOString();
+        let subject = 'Red River Cantina Catering Inquiry';
+        if (firstName && lastName) {
+          subject += ` - ${firstName} ${lastName}`;
+        } else if (name) {
+          subject += ` - ${name}`;
+        }
+        if (eventDate) subject += ` - ${eventDate}`;
+        subject += ` - ${timestamp}`;
+        formData.set('_subject', subject);
+
         formData.set('source_page', window.location.pathname);
         formData.set('submitted_at', new Date().toISOString());
 
@@ -649,6 +675,20 @@ document.addEventListener('DOMContentLoaded', () => {
           formData.set('_replyto', emailValue.trim());
         }
 
+        // Generate unique subject
+        const firstName = formData.get('firstName') || '';
+        const lastName = formData.get('lastName') || '';
+        const name = formData.get('name') || '';
+        const timestamp = new Date().toISOString();
+        let subject = 'Red River Cantina Careers Application';
+        if (firstName && lastName) {
+          subject += ` - ${firstName} ${lastName}`;
+        } else if (name) {
+          subject += ` - ${name}`;
+        }
+        subject += ` - ${timestamp}`;
+        formData.set('_subject', subject);
+
         formData.set('source_page', window.location.pathname);
         formData.set('submitted_at', new Date().toISOString());
 
@@ -734,6 +774,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof emailValue === 'string' && emailValue.trim()) {
           formData.set('_replyto', emailValue.trim());
         }
+
+        // Generate unique subject
+        const firstName = formData.get('firstName') || '';
+        const lastName = formData.get('lastName') || '';
+        const name = formData.get('name') || '';
+        const timestamp = new Date().toISOString();
+        let subject = 'Red River Cantina Community Spirit Night Application';
+        if (firstName && lastName) {
+          subject += ` - ${firstName} ${lastName}`;
+        } else if (name) {
+          subject += ` - ${name}`;
+        }
+        subject += ` - ${timestamp}`;
+        formData.set('_subject', subject);
 
         formData.set('source_page', window.location.pathname);
         formData.set('submitted_at', new Date().toISOString());
@@ -938,6 +992,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof emailValue === 'string' && emailValue.trim()) {
           formData.set('_replyto', emailValue.trim());
         }
+
+        // Generate unique subject
+        const name = formData.get('name') || '';
+        const timestamp = new Date().toISOString();
+        let subject = 'Red River Cantina Questions or Concerns';
+        if (name) subject += ` - ${name}`;
+        subject += ` - ${timestamp}`;
+        formData.set('_subject', subject);
+
         formData.set('source_page', window.location.pathname);
         formData.set('submitted_at', new Date().toISOString());
 
